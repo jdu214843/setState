@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  width: 400px;
+  width: 600px;
   height: 200px;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
@@ -19,51 +19,38 @@ body {
 
 }
 
-.wrapper {
-  width: 500px;
-}
-
-.parent-wrap {
-  width: 100%;
-  display: flex;
-
-}
-
-.table {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  cursor: pointer;
-}
-
-.tbody tr th {
-  border: 0.5px solid rgb(170, 170, 170);
-  padding: 5px;
-  border-collapse: collapse;
-
-}
-
-.table-tr {
-  display: flex;
-}
-
-.table-tr .data-name {
+.filter {
   width: 200px;
+  height: 25px;
+  outline: none;
+  margin: 5px 0px
 }
 
-.table-tr .name-id {
-  width: 50px;
+.wrapper {
+  width: 100%;
 }
 
-.table-tr .name-id:hover {
-  background-color: blue !important;
+.wrapper thead tr th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0px;
+  align-items: center;
+}
+
+.tbody {
+  text-align: center;
+}
+
+.tbody .name-id:hover {
   color: white;
+  background-color: blue;
 }
 
-.table-tr .status {
-  width: 100px;
+.tbody td {
+  border: 0.5px solid black;
+  border-collapse: collapse;
 }
 
-.btn-wrap button {
-  padding: 5px
+.tbody td button {
+  width: fit-content;
 }

@@ -14,16 +14,26 @@ class Student extends React.Component {
 
     render() {
         const onFilter = (e)=>{
-            let result = student.filter(value => value.name.includes(e.target.value));
+            let result = student.filter(value => value.name.toLocaleLowerCase().includes(e.target.value));
             this.setState({data: result});
+
         }
-        const onDelete = (e)=>{
-            let result = student.filter(value => value.id !== e.target.value);
+        const onStatus = (e)=>{
+            // let res = this.state.data.filter(value => value.status.includes(e.target.status));
+            // this.setState({data: res});
+            console.log(e);
+        }
+        
+        const onDelete = (id)=>{
+            let result = this.state.data.filter(value => value.id !== id);
             this.setState({data: result});
+
         }
         return(
             <div>
                 <input className='filter' type="text" onChange={onFilter} placeholder="filter" />
+                <input className='filter' type="text" onChange={onStatus} placeholder="filter" />
+
                 <table className='wrapper'>
                     <thead>
                         <tr>
@@ -47,7 +57,7 @@ class Student extends React.Component {
                                     <button>Edit</button>
                                 </td>
                                 <td>
-                                    <button>Delete</button>
+                                    <button onClick={()=>onDelete(id)}>Delete</button>
                                 </td>
                                 <td>
                                     <button>Selected</button>

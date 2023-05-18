@@ -9,13 +9,14 @@ body {
 }
 
 .container {
-  width: 600px;
+  width: 800px;
   height: 200px;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
   margin-top: 100px;
   scroll-behavior: smooth;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: scroll;
 
 }
 
@@ -24,6 +25,13 @@ body {
   height: 25px;
   outline: none;
   margin: 5px 0px
+}
+
+.select {
+  width: 100px;
+  height: 25px;
+  outline: none;
+  margin: 5px 0px;
 }
 
 .wrapper {
@@ -53,4 +61,8 @@ body {
 
 .tbody td button {
   width: fit-content;
+}
+
+.sort-btn {
+  padding: 3px;
 }

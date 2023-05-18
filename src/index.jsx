@@ -7,33 +7,68 @@ class Student extends React.Component {
      constructor(props) {
         super(props);
         this.state = {
-            name:"Asilbek",
+            name:"",
+            status:"",
             data: student,
+            search: "id",
+            active: null,
+
         }
     }
 
     render() {
         const onFilter = (e)=>{
-            let result = student.filter(value => value.name.toLocaleLowerCase().includes(e.target.value));
+            const {value} = e.target;
+
+            let result = student.filter(item => 
+                `${item[this.state.search]}`.toLowerCase().includes(value.toLowerCase()));
             this.setState({data: result});
 
         }
-        const onStatus = (e)=>{
-            // let res = this.state.data.filter(value => value.status.includes(e.target.status));
-            // this.setState({data: res});
-            console.log(e);
-        }
-        
         const onDelete = (id)=>{
             let result = this.state.data.filter(value => value.id !== id);
             this.setState({data: result});
 
+
+        }
+        const onChange = (event)=>{
+            console.log(event.target.name);
+            this.setState({ [event.target.name] : event.target.value}) ;
+        }
+        const onAdd = ()=>{
+            let newUser = {
+                id: Date.now(),
+                name: this.state.name,
+                status: this.state.status,
+            }
+            this.setState({
+                data: [...this.state.data, newUser],
+                 name: "", 
+                 status: "", 
+                });
+        }
+        const onSelect= (e)=>{
+            this.setState({search: e.target.value});
+        }
+
+        const onEdit= ({id,name, status})=>{
+            this.setState({
+                active: {id,name,status}
+            })
         }
         return(
             <div>
+                <h4>Name: {this.state.name}</h4>
+                <h4>Status: {this.state.status}</h4>
+                <input value={this.state.name} className='filter' name="name" onChange={onChange} type="text" placeholder='name' />
+                <input value={this.state.status} className='filter' name="status" onChange={onChange} type="text" placeholder='status'/>
                 <input className='filter' type="text" onChange={onFilter} placeholder="filter" />
-                <input className='filter' type="text" onChange={onStatus} placeholder="filter" />
-
+                <select onChange={onSelect} name="" id="" className='select'>
+                    <option value="id">ID</option>
+                    <option value="name">name</option>
+                    <option value="status">status</option>
+                </select>
+                <button className='sort-btn' onClick={onAdd}>add</button>
                 <table className='wrapper'>
                     <thead>
                         <tr>
@@ -47,6 +82,7 @@ class Student extends React.Component {
                     </thead>
                 <tbody className='tbody'>
                 {
+                    this.state.data.length ?
                     this.state.data.map(({id, name, status}) =>{
                         return (
                             <tr key={id}>
@@ -54,7 +90,9 @@ class Student extends React.Component {
                                 <td>{name}</td>
                                 <td>{status}</td>
                                 <td>
-                                    <button>Edit</button>
+                                    <button onClick={()=>onEdit({id,name,status})}>
+                                        {this.state.active?.id === id ? "save" : "edit" }
+                                    </button>
                                 </td>
                                 <td>
                                     <button onClick={()=>onDelete(id)}>Delete</button>
@@ -64,7 +102,12 @@ class Student extends React.Component {
                                 </td>
                             </tr>
                         )
-                    })
+                    }) : 
+                    <tr>
+                        <td colSpan={6} className="no-data">
+                            <h1>no data</h1>
+                        </td>
+                    </tr>
                 }
                 </tbody>
                 </table>

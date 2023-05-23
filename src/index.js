@@ -1,23 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Youtube from "./Youtube";
 
-import Student from './index.jsx';
-
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <div className='container'>
-      
-     <Student />
-    </div>
-   
-    
-  </React.StrictMode>
+    <Youtube />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-
-
-

@@ -37,14 +37,14 @@ Icons.Burger = Styled(burger)`
     height: 24px;
 `;
 Icons.Bell = Styled(bell)`
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     margin-left: 20px;
     cursor: pointer;
 `;
 Icons.Menu = Styled(menu)`
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     margin-left: 20px;
     cursor: pointer;
 `;
@@ -75,9 +75,9 @@ export const Input = Styled.input`
     color: rgba(255, 255, 255, 0.7);
     font-size: 16px;
     padding-left: 10px;
-    :focus{
+
         outline: none;
-    };
+
 `;
 
 export const User = Styled.img`

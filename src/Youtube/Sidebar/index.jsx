@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import { Container, Wrapper, Title } from "./style";
 import { sidebar } from "../../utils/saidbar";
+import { Container, Wrapper, Title, ItemStlye } from "./style";
 export default class Youtube extends Component {
   render() {
     return (
       <Container>
-        {sidebar.map((value) => (
-          <Wrapper key={value.id}>
-            {value.title && <Title title>{value.title}</Title>}
-            {value.data.map((data) => (
-              <Title>{data.title}</Title>
+        {sidebar.map(({ icons, id, title, data }) => (
+          <Wrapper key={id}>
+            {title && <Title title>{title}</Title>}
+            {data.map(({ icons: Icon, title: subTitle }) => (
+              <ItemStlye>
+                <Icon />
+                <Title>{subTitle}</Title>
+              </ItemStlye>
             ))}
           </Wrapper>
         ))}

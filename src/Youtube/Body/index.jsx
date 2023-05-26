@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Container } from "./style";
 import Card from "./Card";
+import Style from "styled-components";
 import { data } from "../../mock";
+
+export const Sheet = Style.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+`;
 export default class Youtube extends Component {
   render() {
     return (
